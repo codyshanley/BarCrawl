@@ -1,0 +1,54 @@
+﻿@model List<YelpModel>
+
+@{
+    ViewData["Title"] = "Result";
+}
+
+<h1>Result</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Alias
+            </th>
+
+            <th>
+                Name
+            </th>
+            <th>
+                Longitude
+            </th>
+            <th>
+                Latitude
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Alias)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Longitude)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Latitude)
+            </td>
+
+            <td>
+                @Html.ActionLink("Start", "Edit", new { /* id=item.PrimaryKey */ })
+
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
