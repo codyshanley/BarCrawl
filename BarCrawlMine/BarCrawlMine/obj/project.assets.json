@@ -12942,11 +12942,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Jarmo\\source\\repos\\BarCrawlMine\\BarCrawlMine\\BarCrawlMine.csproj",
+      "projectUniqueName": "C:\\Users\\Jarmo\\projects\\FinalProject\\BarCrawlMine\\BarCrawlMine\\BarCrawlMine.csproj",
       "projectName": "BarCrawlMine",
-      "projectPath": "C:\\Users\\Jarmo\\source\\repos\\BarCrawlMine\\BarCrawlMine\\BarCrawlMine.csproj",
+      "projectPath": "C:\\Users\\Jarmo\\projects\\FinalProject\\BarCrawlMine\\BarCrawlMine\\BarCrawlMine.csproj",
       "packagesPath": "C:\\Users\\Jarmo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Jarmo\\source\\repos\\BarCrawlMine\\BarCrawlMine\\obj\\",
+      "outputPath": "C:\\Users\\Jarmo\\projects\\FinalProject\\BarCrawlMine\\BarCrawlMine\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
