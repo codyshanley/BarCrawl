@@ -12,6 +12,7 @@ namespace BarCrawlMine.Models
         public double Longitude { get; set; }
         public double Latitude { get; set; }
         public string Location { get; set; }
+        //public string Price { get; set; }
 
         public Bar()
         {
@@ -24,6 +25,7 @@ namespace BarCrawlMine.Models
             this.Latitude = double.Parse(t["coordinates"]["latitude"].ToString());
             this.Longitude = double.Parse(t["coordinates"]["longitude"].ToString());
             this.Location = t["location"]["display_address"].ToString();
+           // this.Price = t["price"].ToString();
         }
     }
 

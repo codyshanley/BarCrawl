@@ -64,3 +64,4 @@ C:\Users\Jarmo\projects\FinalProject\BarCrawlMine\BarCrawlMine\obj\Debug\netcore
 C:\Users\Jarmo\projects\FinalProject\BarCrawlMine\BarCrawlMine\obj\Debug\netcoreapp2.2\BarCrawlMine.Views.pdb
 C:\Users\Jarmo\projects\FinalProject\BarCrawlMine\BarCrawlMine\obj\Debug\netcoreapp2.2\BarCrawlMine.csproj.CopyComplete
 C:\Users\Jarmo\projects\FinalProject\BarCrawlMine\BarCrawlMine\obj\Debug\netcoreapp2.2\Razor\Views\Home\Result.g.cshtml.cs
+C:\Users\Jarmo\projects\FinalProject\BarCrawlMine\BarCrawlMine\obj\Debug\netcoreapp2.2\Razor\Views\Home\Stops.g.cshtml.cs

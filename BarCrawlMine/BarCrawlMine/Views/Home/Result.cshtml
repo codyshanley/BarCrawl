@@ -9,11 +9,9 @@
                 <th>
                     Location
                 </th>
+       
                 <th>
-                    Latitude
-                </th>
-                <th>
-                    Longitude
+                    Price
                 </th>
                
             </tr>
@@ -30,10 +28,17 @@
                         @Html.DisplayFor(modelItem => item.Location)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Latitude)
+                        @*@Html.DisplayFor(modelItem => item.Price)*@
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.Longitude)
+                        @Html.ActionLink("Start", "Stops", "Home",
+                           new
+                                {
+                                    name = item.Name,     
+                                    location = item.Location,   
+                                    longitude = item.Longitude,
+                                    latitude = item.Latitude,
+                                }, null)
                     </td>
                     
                 </tr>
