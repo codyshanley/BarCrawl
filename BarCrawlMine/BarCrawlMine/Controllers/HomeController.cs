@@ -40,36 +40,46 @@ namespace BarCrawlMine.Controllers
             return barList;
         }
 
+
+
         public List<Bar> getCrawlBars(Bar start, int radius, int numBars)
         {
+            Random rand = new Random();
+            Bar point = start;
+            List<Bar> crawlList = new List<Bar>();
+            crawlList.Add(point);
             // Get all valid bars
-            HttpWebRequest request = WebRequest.CreateHttp($"https://api.yelp.com/v3/businesses/search?term=bars&location={start.Location}&radius={radius}");
-            request.Headers.Add("Authorization", "Bearer 5AZ1TMhzZzb52DbbAMkydLPjNRSURY3x-DtC2o7qDjNTa2n96PSxuLZMmQoBy3WtX5q4EWUh4KQWVG1GG_nq_x2YLEssXjh5WF5kYw8E_VPmyRVMRfDHLwOYM0bXXXYx");
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            StreamReader rd = new StreamReader(response.GetResponseStream());
-            string ApiText = rd.ReadToEnd();
-            JToken tokens = JToken.Parse(ApiText);
-
-            List<JToken> ts = tokens["businesses"].ToList();
-            List<Bar> possibleList = new List<Bar>();
-
-            // Put all valid bars into list
-            foreach (JToken t in ts)
+            while (crawlList.Count < numBars)
             {
-                Bar b = new Bar(t);
-                possibleList.Add(b);
-            }
-            return possibleList;
-            // Use RNG and the number chosen to choose which bars will be on the crawl
-            /*
-            Random rnd = new Random();
-            int randNum = 0;
+                HttpWebRequest request = WebRequest.CreateHttp($"https://api.yelp.com/v3/businesses/search?term=bars&location={point.Location}&radius={radius}");
+                request.Headers.Add("Authorization", "Bearer 5AZ1TMhzZzb52DbbAMkydLPjNRSURY3x-DtC2o7qDjNTa2n96PSxuLZMmQoBy3WtX5q4EWUh4KQWVG1GG_nq_x2YLEssXjh5WF5kYw8E_VPmyRVMRfDHLwOYM0bXXXYx");
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                StreamReader rd = new StreamReader(response.GetResponseStream());
+                string ApiText = rd.ReadToEnd();
+                JToken tokens = JToken.Parse(ApiText);
 
-            for (int i = numBars; i > 0; i--)
-            {
-                randNum = rnd(1,)
+                List<JToken> ts = tokens["businesses"].ToList();
+                List<Bar> possibleList = new List<Bar>();
+                foreach (JToken t in ts)
+                {
+                    Bar b = new Bar(t);
+                    possibleList.Add(b);
+                }
+
+
+                // RNG choose a close by bar, add to list
+                int index = rand.Next(possibleList.Count);
+                point = possibleList[index];
+
+                // Add only if it's not already on the list - not working
+                if(!crawlList.Contains(point))
+                {
+                    crawlList.Add(point);
+                }
+
             }
-            */
+
+            return crawlList; 
         }
 
         public IActionResult Stops(string name, string location, double longitude, double latitude)
