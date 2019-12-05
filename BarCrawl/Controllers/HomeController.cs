@@ -41,7 +41,7 @@ namespace BarCrawl.Controllers
             List<YelpModel>bars = GetBars();
             return View(bars);
         }
-        public IActionResult Start()
+        public List<YelpModel> Start()
         {
             List<YelpModel> bars = GetBars();
             LongAndLat a = new LongAndLat();
@@ -68,7 +68,39 @@ namespace BarCrawl.Controllers
             return longlat;
            
         }
-       
+
+        public List<GoogleMapsModel> GoogleMapsAPI(string Start, string End, string Mode)
+
+        {
+            string key = "AIzaSyBnmEUMhQ - ijIZk1r3QUvbWkOwBQ2v2KcU";
+            HttpWebRequest request = WebRequest.CreateHttp($"https://maps.googleapis.com/maps/api/directions/json?origin={Start}&destination={End}+&key={key}&mode={Mode}");
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            //This will convert the response to a string
+            StreamReader rd = new StreamReader(response.GetResponseStream());
+            string APIText = rd.ReadToEnd();
+            JToken t = JToken.Parse(APIText);
+
+            List<JToken> tt = t["routes"].ToList();
+
+            List<GoogleMapsModel> Google = new List<GoogleMapsModel>();
+
+            foreach (JToken f in tt)
+            {
+                GoogleMapsModel d = new GoogleMapsModel(f);
+                Google.Add(d);
+            }
+
+            return Google;
+
+
+        }
+
+        public IActionResult RouteView(string Start, string End, string Mode)
+        {
+            List<GoogleMapsModel> Go = GoogleMapsAPI(Start, End, Mode);
+            return View(Go);
+        }
+
         public IActionResult Index()
         {
             return View();
